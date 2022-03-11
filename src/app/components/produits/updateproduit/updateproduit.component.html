@@ -1,0 +1,30 @@
+<div class="container contact-form">
+    <form method="post" #myForm="ngForm" (ngSubmit)="handleUpdate(myForm)">
+        <h3>Modifier {{modpro.nom}}</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" name="nom" [(ngModel)]="modpro.nom" class="form-control"
+                        placeholder="Nom du produit ">
+                </div>
+                <div class="form-group">
+                    <input type="number" name="prix" [(ngModel)]="modpro.prix" class="form-control"
+                        placeholder="Prix du produit ">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" name="details" [(ngModel)]="modpro.details" class="form-control"
+                        placeholder="description du produit " style="width: 100%; height: 75px;">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success" name="addBtn"
+                        [disabled]="myForm.invalid">Modifier</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

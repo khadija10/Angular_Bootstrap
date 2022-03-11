@@ -1,0 +1,34 @@
+{
+  "produits": [
+    {
+      "id": 1,
+      "nom": "Tuc Pocket Biscuits Salé",
+      "prix": 290,
+      "details": "Biscuit salé 30 paquets x 30g Valeurs nutritionnelles pour 100g Glucides 54,2g, Protéines 6,8g, Lipides 22,1g, valeurs énergétiques 442KCAL "
+    },
+    {
+      "id": 2,
+      "nom": "Lipton Thé Glacé",
+      "prix": 922.5,
+      "details": "Le jus de pêche à base de concentré (0,1%), arôme, Extrait du thé noir"
+    },
+    {
+      "id": 3,
+      "nom": "Brosse à Ongles",
+      "prix": 690,
+      "details": "Brosses à ongles pour les professionnels de la manucure, beauté des mains et des pieds."
+    },
+    {
+      "id": 4,
+      "nom": "Blédina Pot Carotte",
+      "prix": 850,
+      "details": "Avec sa texture douce, ce petit pot est idéal pour les premières cuillères et offre tout le goût de la carotte dans une recette simples "
+    },
+    {
+      "id": 5,
+      "nom": "Cac Théière Inox un litre",
+      "prix": 4050,
+      "details": "Théière en acier inoxydable avec filtre bouilloire à thé pour Maison"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+<div class="container" style="padding-top: 3%;">
+  
+<div *ngIf="produits.length else loading">
+  <div class="row">
+    <div class="col-5"><h1 style="color: #6fc2f1;">Liste des produits</h1></div>
+    <div class="col-5"><nav class="navbar navbar-light">
+      <div>
+        <form class="d-flex" (ngSubmit)="handleSearch(myForm)" #myForm="ngForm">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" ngModel type="text" name="nom">
+          <button class="btn btn-outline-success" type="submit">Recherche</button>
+        </form>
+      </div>
+    </nav></div>
+    <div class="col-2  "><button class="btn btn-success mt-2 float-right  d-block" style="margin-left: 50%;" routerLink="/produits/addproduit">Ajouter</button></div>
+  </div>
+  <div class="card shadow" *ngIf="!recherche">
+    <table class="table table-responsive table-striped">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let produit of produits; let index = index">
+                  <td>{{produit.nom}}</td>
+                  <td>{{produit.prix}} CFA</td>
+                  <td> <button  type="button" class="btn btn-primary ml-2" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="detailler(index)">Details</button>
+  
+                    
+                  </td>
+                  <td><button type="button" class="btn btn-warning ml-2" data-bs-toggle="modal" data-bs-target="#exampleModal1" (click)="modif(index)">Editer
+                  </button></td>
+                  <td><button type="button" class="btn btn-sm btn-danger ml-2" [swal]="{title: 'SUPPRESSION!!!!', text: 'Voulez-vous vraiment supprimer ce produit: ' + produit.nom + ' ?', showDenyButton: true, denyButtonText: 'NON', confirmButtonText: 'OUI, Supprimer' , icon: 'warning'}" (confirm)="delete(produit.id)">Suprimer</button></td>
+                  </tr>
+                </tbody>
+              </table>
+              
+  </div>
+  <div>
+
+  </div>
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Details sur {{detaille.nom}} </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              
+            {{detaille.details}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div>
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modification</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+             <app-updateproduit (produitToUpdate)="updateproduit($event)" [modpro]="mode"></app-updateproduit> 
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div> 
+
+<div class="card shadow" *ngIf="recherche">
+  <table class="table table-responsive table-striped">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prix</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+              <tr *ngFor="let produit of produitsRecherche; let index = index">
+                <td>{{produit.nom}}</td>
+                <td>{{produit.prix}} CFA</td>
+                <td> <button  type="button" class="btn btn-primary ml-2" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="detailler(index)">Details</button>
+
+                  
+                </td>
+                <td><button type="button" class="btn btn-warning ml-2" data-bs-toggle="modal" data-bs-target="#exampleModal1" (click)="modif(index)">Editer
+                </button></td>
+                <td><button type="button" class="btn btn-sm btn-danger ml-2" [swal]="{title: 'SUPPRESSION!!!!',
+                  text: 'Voulez-vous vraiment supprimer ce produit: ' + produit.nom + ' ?',
+                  showDenyButton: true,
+                  denyButtonText: 'NON',
+                  confirmButtonText: 'OUI, Supprimer' , icon: 'warning'}">Suprimer</button></td>
+                </tr>
+              </tbody>
+            </table>   
+</div>
+</div>
+
+<div>
+  <ng-template #loading>
+    <h2 style="text-align: center;">Aucun produit enregistré</h2>
+    <div class="modal-footer justify-content-center">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" routerLink="/">Page d'accueil</button>
+      <button type="submit" class="btn btn-success" name="addBtn" routerLink="/produits/addproduit">Ajouter</button>
+      
+    </div>
+  </ng-template>
+  
+</div>
